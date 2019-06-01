@@ -1,5 +1,8 @@
 package com.example.topstarredrepos.main.models;
 
+/**
+ * Created by BouzalmatAbderrahman on 6/1/2019
+ */
 public class Repo {
 
     private String title, username, description, avatarUrl, rating;
