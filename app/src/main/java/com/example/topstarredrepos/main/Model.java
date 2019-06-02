@@ -9,7 +9,7 @@ import com.example.topstarredrepos.main.interfaces.ModelInterface;
 import com.example.topstarredrepos.utils.VolleySingleton;
 
 /**
- * Created by Arcana inc on 6/2/2019
+ * Created by BouzalmatAbderrahman on 6/2/2019
  */
 public class Model implements ModelInterface {
     @Override
