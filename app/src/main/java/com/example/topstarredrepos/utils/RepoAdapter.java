@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.topstarredrepos.R;
 import com.example.topstarredrepos.main.models.Repo;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder>{
         holder.username.setText(repo.getUsername());
         holder.rating.setText(repo.getRating());
 
-        Picasso.get().load(repo.getAvatarUrl()).into(holder.avatar);
+
     }
 
 
