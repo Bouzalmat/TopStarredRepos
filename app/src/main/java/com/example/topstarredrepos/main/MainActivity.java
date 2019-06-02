@@ -1,10 +1,11 @@
-package com.example.topstarredrepos;
+package com.example.topstarredrepos.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.topstarredrepos.R;
 import com.example.topstarredrepos.main.models.Repo;
 import com.example.topstarredrepos.utils.RepoAdapter;
 
