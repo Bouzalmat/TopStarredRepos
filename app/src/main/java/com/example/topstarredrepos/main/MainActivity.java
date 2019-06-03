@@ -23,18 +23,22 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
     RepoAdapter adapter;
     RecyclerView reposList;
     ArrayList<Repo> repos;
-
+    @Inject Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        DaggerMainComponent.builder()
+                .mainModule(new MainModule(this))
+                .contextModule(new ContextModule(this))
+                .build()
+                .inject(this);
 
         repos = new ArrayList<Repo>();
         adapter = new RepoAdapter(this,repos);
-        
+        presenter.getRepos();
         reposList = (RecyclerView)findViewById(R.id.repos_list);
         reposList.setLayoutManager(new LinearLayoutManager(this));
         reposList.setAdapter(adapter);
