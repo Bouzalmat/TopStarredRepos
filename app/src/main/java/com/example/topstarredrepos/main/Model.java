@@ -13,9 +13,9 @@ import com.example.topstarredrepos.utils.VolleySingleton;
  */
 public class Model  {
 
-    public static void setCustomRequest(String url, Context context, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
+    public static void setCustomRequest(String url, int page, Context context, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
         //set up string request to get repos list from the url
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url ,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url + page ,
                 responseListener,
                 errorListener);
 

@@ -48,7 +48,7 @@ public class Presenter implements PresenterInterface, Paginate.Callbacks {
     @Override
     public void getRepos(){
        // reposDataSet = new ArrayList<Repo>();
-        Model.setCustomRequest(setUpUrl(), context, new Response.Listener<String>() {
+        Model.setCustomRequest(setUpUrl(), page, context, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         loadingStatus = false;
