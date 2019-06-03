@@ -16,31 +16,33 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.lang.reflect.Array;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by BouzalmatAbderrahman on 6/2/2019
  */
 public class Presenter implements PresenterInterface {
 
-    public  ArrayList<Repo> reposDataSet;
+    //public  ArrayList<Repo> reposDataSet;
     public ViewInterface view;
-    public Context context;
+    @Inject Context context;
 
-    public Presenter(ArrayList<Repo> reposDataSet, ViewInterface view, Context context){
-        this.reposDataSet = reposDataSet;
-        this.context = context;
+    @Inject
+    public Presenter(ViewInterface view){
+        //this.reposDataSet = reposDataSet;
         this.view = view;
     }
 
     @Override
     public void getRepos(){
-        reposDataSet = new ArrayList<Repo>();
+       // reposDataSet = new ArrayList<Repo>();
         Model.setCustomRequest(setUpUrl(), context, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
