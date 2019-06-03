@@ -12,6 +12,7 @@ import com.example.topstarredrepos.main.models.Repo;
 import com.example.topstarredrepos.main.modules.ContextModule;
 import com.example.topstarredrepos.main.modules.MainModule;
 import com.example.topstarredrepos.utils.RepoAdapter;
+import com.paginate.Paginate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +34,19 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
         initDaggerComponent();
         initComponents();
         configureReposList();
+
+        //the Paginate Builder
+        Paginate.with(reposList, presenter)
+                .setLoadingTriggerThreshold(3)
+                .addLoadingListItem(true)
+                .setLoadingListItemCreator(null)
+                .build();
     }
 
     public void initComponents(){
         reposList = (RecyclerView)findViewById(R.id.repos_list);
         repos = new ArrayList<Repo>();
         adapter = new RepoAdapter(this,repos);
-        presenter.getRepos();
-
     }
 
     public void configureReposList(){
