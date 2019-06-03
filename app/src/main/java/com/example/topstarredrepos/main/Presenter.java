@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.topstarredrepos.main.interfaces.ModelInterface;
 import com.example.topstarredrepos.main.interfaces.PresenterInterface;
 import com.example.topstarredrepos.main.interfaces.ViewInterface;
 import com.example.topstarredrepos.main.models.Repo;

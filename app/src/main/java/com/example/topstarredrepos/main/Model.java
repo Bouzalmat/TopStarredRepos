@@ -5,7 +5,6 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-import com.example.topstarredrepos.main.interfaces.ModelInterface;
 import com.example.topstarredrepos.utils.VolleySingleton;
 
 /**
