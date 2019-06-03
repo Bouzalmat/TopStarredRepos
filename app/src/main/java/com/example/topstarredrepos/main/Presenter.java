@@ -10,6 +10,7 @@ import com.example.topstarredrepos.main.interfaces.PresenterInterface;
 import com.example.topstarredrepos.main.interfaces.ViewInterface;
 import com.example.topstarredrepos.main.models.Repo;
 import com.example.topstarredrepos.utils.GlobalVars;
+import com.paginate.Paginate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +29,7 @@ import javax.inject.Inject;
 /**
  * Created by BouzalmatAbderrahman on 6/2/2019
  */
-public class Presenter implements PresenterInterface {
+public class Presenter implements PresenterInterface, Paginate.Callbacks {
 
     //public  ArrayList<Repo> reposDataSet;
     public ViewInterface view;
@@ -97,5 +98,20 @@ public class Presenter implements PresenterInterface {
         }
 
         return reposList;
+    }
+
+    @Override
+    public void onLoadMore() {
+
+    }
+
+    @Override
+    public boolean isLoading() {
+        return false;
+    }
+
+    @Override
+    public boolean hasLoadedAllItems() {
+        return false;
     }
 }
