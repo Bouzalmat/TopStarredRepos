@@ -31,7 +31,6 @@ import javax.inject.Inject;
  */
 public class Presenter implements PresenterInterface, Paginate.Callbacks {
 
-    //public  ArrayList<Repo> reposDataSet;
     public ViewInterface view;
     @Inject Context context;
     private int page;
@@ -39,7 +38,6 @@ public class Presenter implements PresenterInterface, Paginate.Callbacks {
 
     @Inject
     public Presenter(ViewInterface view){
-        //this.reposDataSet = reposDataSet;
         this.view = view;
         this.page = 0;
         this.loadingStatus = false;
@@ -47,7 +45,6 @@ public class Presenter implements PresenterInterface, Paginate.Callbacks {
 
     @Override
     public void getRepos(){
-       // reposDataSet = new ArrayList<Repo>();
         Model.setCustomRequest(setUpUrl(), page, context, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
