@@ -34,11 +34,15 @@ public class Presenter implements PresenterInterface, Paginate.Callbacks {
     //public  ArrayList<Repo> reposDataSet;
     public ViewInterface view;
     @Inject Context context;
+    private int page;
+    private boolean loadingStatus;
 
     @Inject
     public Presenter(ViewInterface view){
         //this.reposDataSet = reposDataSet;
         this.view = view;
+        this.page = 0;
+        this.loadingStatus = false;
     }
 
     @Override
@@ -47,6 +51,7 @@ public class Presenter implements PresenterInterface, Paginate.Callbacks {
         Model.setCustomRequest(setUpUrl(), context, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        loadingStatus = false;
                         //reposDataSet = (ArrayList)extractReposList(response);
                         if(view != null)
                         view.updateRepos(extractReposList(response));
@@ -102,16 +107,21 @@ public class Presenter implements PresenterInterface, Paginate.Callbacks {
 
     @Override
     public void onLoadMore() {
-
+        loadingStatus = true;
+        if(page < GlobalVars.PAGE_LIMIT){
+            //if the user didn't yet arrived to the bottom, increment the page count to get the next dataSet
+            page++;
+            getRepos();
+        }
     }
 
     @Override
     public boolean isLoading() {
-        return false;
+        return loadingStatus;
     }
 
     @Override
     public boolean hasLoadedAllItems() {
-        return false;
+        return page >= GlobalVars.PAGE_LIMIT;
     }
 }
