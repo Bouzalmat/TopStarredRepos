@@ -83,8 +83,9 @@ public class Presenter implements PresenterInterface {
                 String title = items.getJSONObject(i).getString("name");
                 String username = items.getJSONObject(i).getJSONObject("owner").getString("login");
                 String description = items.getJSONObject(i).getString("description");
+                String avatarUrl = items.getJSONObject(i).getJSONObject("owner").getString("avatar_url");
                 String rating =  items.getJSONObject(i).getString("stargazers_count");
-                Repo repo = new Repo(title, username, description , rating);
+                Repo repo = new Repo(title, username, description, avatarUrl, rating);
                 reposList.add(repo);
 
             }
