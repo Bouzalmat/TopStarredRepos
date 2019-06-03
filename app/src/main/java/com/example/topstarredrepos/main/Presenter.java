@@ -1,8 +1,13 @@
 package com.example.topstarredrepos.main;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.example.topstarredrepos.main.interfaces.ModelInterface;
 import com.example.topstarredrepos.main.interfaces.PresenterInterface;
+import com.example.topstarredrepos.main.interfaces.ViewInterface;
 import com.example.topstarredrepos.main.models.Repo;
 import com.example.topstarredrepos.utils.GlobalVars;
 
@@ -11,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +27,36 @@ import java.util.List;
  * Created by BouzalmatAbderrahman on 6/2/2019
  */
 public class Presenter implements PresenterInterface {
+
+    public  ArrayList<Repo> reposDataSet;
+    public ViewInterface view;
+    public Context context;
+
+    public Presenter(ArrayList<Repo> reposDataSet, ViewInterface view, Context context){
+        this.reposDataSet = reposDataSet;
+        this.context = context;
+        this.view = view;
+    }
+
+    @Override
+    public void getRepos(){
+        reposDataSet = new ArrayList<Repo>();
+        Model.setCustomRequest(setUpUrl(), context, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //reposDataSet = (ArrayList)extractReposList(response);
+                        if(view != null)
+                        view.updateRepos(extractReposList(response));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+
+                    }
+                });
+    }
 
     public static String setUpUrl(){
         // Get 1 month ago from current datetime for the api query

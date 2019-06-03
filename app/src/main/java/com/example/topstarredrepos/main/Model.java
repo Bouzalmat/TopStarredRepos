@@ -11,11 +11,11 @@ import com.example.topstarredrepos.utils.VolleySingleton;
 /**
  * Created by BouzalmatAbderrahman on 6/2/2019
  */
-public class Model implements ModelInterface {
-    @Override
-    public void setCustomRequest(String url, int page, Context context, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
+public class Model  {
+
+    public static void setCustomRequest(String url, Context context, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
         //set up string request to get repos list from the url
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url + page,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url ,
                 responseListener,
                 errorListener);
 
